@@ -5,8 +5,8 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <ul>
-        {data.hits.map(it => {
-          return <li key={it.objectID}>{it.title}</li>
+        {data.hits.map((it, index) => {
+          return <li key={it.objectID}>{index + 1}. {it.title}</li>
         })}
       </ul>
     </Layout>
