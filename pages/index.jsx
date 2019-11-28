@@ -29,7 +29,7 @@ const Home = ({ data }) => {
             <li key={it.objectID}>
               <Link href={`/items?id=${it.objectID}`} as={`/items/${it.objectID}`}>
                 <a>
-                  {index + 1}. {it.title}
+                  {index + 1}. {it.title || it.story_title}
                 </a>
               </Link>
               <Stats>

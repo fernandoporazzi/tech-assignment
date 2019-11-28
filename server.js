@@ -14,7 +14,7 @@ app.prepare().then(() => {
   });
 
   server.get('/:tag', (req, res) => {
-    return app.render(req, res, '/', { id: req.params.id });
+    return app.render(req, res, '/', { tag: req.params.tag });
   });
 
   server.all('*', (req, res) => {

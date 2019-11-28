@@ -35,7 +35,7 @@ const Comment = ({ comment, style }) => {
 const Item = ({ data }) => {
   return (
     <Layout>
-      <h2>{data.title}</h2>
+      <h2>{data.title || data.story_title}</h2>
       
       <form action="">
         <textarea></textarea>
