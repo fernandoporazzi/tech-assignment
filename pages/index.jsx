@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import Link from 'next/link';
 import Layout from '../components/layout/layout';
 
 const Home = ({ data }) => {
@@ -6,7 +7,15 @@ const Home = ({ data }) => {
     <Layout>
       <ul>
         {data.hits.map((it, index) => {
-          return <li key={it.objectID}>{index + 1}. {it.title}</li>
+          return (
+            <li key={it.objectID}>
+              <Link href={`/items?id=${it.objectID}`} as={`/items/${it.objectID}`}>
+                <a>
+                  {index + 1}. {it.title}
+                </a>
+              </Link>
+            </li>
+          )
         })}
       </ul>
     </Layout>
