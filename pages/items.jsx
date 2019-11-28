@@ -5,18 +5,27 @@ import Layout from '../components/layout/layout';
 const UserComment = styled.div`
   margin-left: 25px;
   margin-top: 10px;
+  font-size: 13px;
+  font-family: Verdana, Geneva, sans-serif;
+  background: #efefef;
+  border-radius: 10px;
+  padding: 30px;
+`
+const CommentHeader = styled.div`
+  color: #999;
+  font-size: 12px;
 `
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, style }) => {
   const nestedComments = (comment.children || []).map(comment => {
-    return <Comment key={comment.id} comment={comment} type="child" />
+    return <Comment key={comment.id} comment={comment} type="child" style={{background: 'white'}} />
   });
  
   return (
-    <UserComment>
-      <div style={{color: 'red'}}>
+    <UserComment style={style}>
+      <CommentHeader>
         {comment.author} - {comment.created_at}
-      </div>
+      </CommentHeader>
       <div dangerouslySetInnerHTML={{__html: comment.text}} />
       {nestedComments}
     </UserComment>
