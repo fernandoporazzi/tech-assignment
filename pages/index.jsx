@@ -1,11 +1,29 @@
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link';
 import Layout from '../components/layout/layout';
+import styled from 'styled-components'
+
+const Ul = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: Verdana, Geneva, sans-serif;
+`;
+
+const Stats = styled.div`
+  color: #999;
+  font-size: 12px;
+
+  a {
+    color: inherit;
+  }
+`;
 
 const Home = ({ data }) => {
   return (
     <Layout>
-      <ul>
+      <Ul>
         {data.hits.map((it, index) => {
           return (
             <li key={it.objectID}>
@@ -14,10 +32,15 @@ const Home = ({ data }) => {
                   {index + 1}. {it.title}
                 </a>
               </Link>
+              <Stats>
+                <p>
+                  {it.points} points by <a href="#">{it.author}</a> - <Link href={`/items?id=${it.objectID}`} as={`/items/${it.objectID}`}><a>{it.num_comments} comments</a></Link>
+                </p>
+              </Stats>
             </li>
           )
         })}
-      </ul>
+      </Ul>
     </Layout>
   );
 };
