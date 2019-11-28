@@ -13,6 +13,10 @@ app.prepare().then(() => {
     return app.render(req, res, '/items', { id: req.params.id });
   });
 
+  server.get('/:tag', (req, res) => {
+    return app.render(req, res, '/', { id: req.params.id });
+  });
+
   server.all('*', (req, res) => {
     return handle(req, res);
   });

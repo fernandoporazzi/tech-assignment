@@ -22,9 +22,9 @@ const Home = ({ data }) => {
   );
 };
 
-Home.getInitialProps = async ({ req }) => {
+Home.getInitialProps = async ({ query: { tag } }) => {
   // https://hn.algolia.com/api
-  const res = await fetch('https://hn.algolia.com/api/v1/search?tags=story');
+  const res = await fetch(`https://hn.algolia.com/api/v1/search?tags=${tag || 'story'}`);
   const data = await res.json();
 
   return { data };

@@ -4,7 +4,8 @@ import Layout from '../components/layout/layout';
 const Item = ({ data }) => {
   return (
     <Layout>
-      {data.title}
+      <h2>{data.title}</h2>
+      {data.type}
     </Layout>
   );
 };
