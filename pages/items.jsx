@@ -1,5 +1,11 @@
 import fetch from 'isomorphic-unfetch'
+import styled from 'styled-components'
 import Layout from '../components/layout/layout';
+
+const UserComment = styled.div`
+  margin-left: 25px;
+  margin-top: 10px;
+`
 
 const Comment = ({ comment }) => {
   const nestedComments = (comment.children || []).map(comment => {
@@ -7,11 +13,13 @@ const Comment = ({ comment }) => {
   });
  
   return (
-    <div style={{"marginLeft": "25px", "marginTop": "10px"}}>
-      <div style={{color: 'red'}}>{comment.author} - {comment.created_at}</div>
+    <UserComment>
+      <div style={{color: 'red'}}>
+        {comment.author} - {comment.created_at}
+      </div>
       <div dangerouslySetInnerHTML={{__html: comment.text}} />
       {nestedComments}
-    </div>
+    </UserComment>
   )
 };
 
