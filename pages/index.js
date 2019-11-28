@@ -1,15 +1,15 @@
 import fetch from 'isomorphic-unfetch'
+import Layout from '../components/layout/layout';
 
 const Home = ({items}) => {
-
   return (
-    <>
+    <Layout>
       <ul>
         {items.map(it => {
           return <li key={it.id}>{it.title}</li>
         })}
       </ul>
-    </>
+    </Layout>
   );
 };
 
